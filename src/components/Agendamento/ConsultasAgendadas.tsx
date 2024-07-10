@@ -2,9 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { buscarAgendamentosConsulta } from '../../utils/requestAgendamentos/buscarAgendamento';
 
 interface AgendamentoConsulta {
-  id: string;
-  nome: string;
-  // Adicione outros campos conforme necessário
+  idAgenda: number;
+  dataAgenda: string;
+  horaAgenda: string;
+  status: string;
+  medico: string;
+  tipoPrestacao: string;
+  descExameProce: string | null;
 }
 
 const ConsultasAgendadas: React.FC = () => {
@@ -12,14 +16,15 @@ const ConsultasAgendadas: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const idAderente = "4048";
-  const unidadeAtendimentoId = "2";
-
   useEffect(() => {
     const fetchAgendamentos = async () => {
       try {
-        const data = await buscarAgendamentosConsulta(idAderente, unidadeAtendimentoId);
-        setAgendamentos(data);
+        const response = await buscarAgendamentosConsulta();
+        if (response.success) {
+          setAgendamentos(response.data);
+        } else {
+          setError('Falha ao buscar dados');
+        }
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);
@@ -47,7 +52,14 @@ const ConsultasAgendadas: React.FC = () => {
       <h2>Consultas Agendadas</h2>
       <ul>
         {agendamentos.map((agendamento) => (
-          <li key={agendamento.id}>{agendamento.nome}</li>
+          <li key={agendamento.idAgenda}>
+            <p><strong>Data:</strong> {agendamento.dataAgenda}</p>
+            <p><strong>Hora:</strong> {agendamento.horaAgenda}</p>
+            <p><strong>Status:</strong> {agendamento.status}</p>
+            <p><strong>Médico:</strong> {agendamento.medico}</p>
+            <p><strong>Tipo de Prestação:</strong> {agendamento.tipoPrestacao}</p>
+            <p><strong>Descrição do Exame/Procedimento:</strong> {agendamento.descExameProce || 'N/A'}</p>
+          </li>
         ))}
       </ul>
     </div>
