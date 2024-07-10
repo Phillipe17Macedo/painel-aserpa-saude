@@ -42,7 +42,7 @@ const NotificationForm = () => {
       <h2>Enviar Notificação</h2>
       <form onSubmit={(e) => { e.preventDefault(); sendNotification(); }}>
         <div>
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="title" className='texto-titulo-form'>Título da Notificação:</label>
           <input
             type="text"
             id="title"
@@ -52,7 +52,7 @@ const NotificationForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="message">Message:</label>
+          <label htmlFor="message">Menssagem da Notificação:</label>
           <textarea
             id="message"
             value={message}
@@ -61,7 +61,7 @@ const NotificationForm = () => {
           ></textarea>
         </div>
         <div>
-          <label htmlFor="url">URL (optional):</label>
+          <label htmlFor="url">URL (opcional):</label>
           <input
             type="url"
             id="url"
@@ -69,7 +69,7 @@ const NotificationForm = () => {
             onChange={(e) => setUrl(e.target.value)}
           />
         </div>
-        <button type="submit">Send Notification</button>
+        <button type="submit">Enviar Notificação</button>
       </form>
       {error && <div className="error-message">Error: {error}</div>}
     </div>

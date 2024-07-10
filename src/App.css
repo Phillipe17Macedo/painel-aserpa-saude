@@ -13,4 +13,5 @@ main {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 60px); /* Ajusta a altura para o conteúdo principal */
+  height: 1000px;
 }
