@@ -1,5 +1,6 @@
 import './App.css';
 import NotificationForm from './Notification/NotificationForm';
+import ConsultasAgendadas from '../src/components/Agendamento/ConsultasAgendadas';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       </header>
       <main>
         <NotificationForm />
+        <ConsultasAgendadas />
       </main>
     </div>
   );

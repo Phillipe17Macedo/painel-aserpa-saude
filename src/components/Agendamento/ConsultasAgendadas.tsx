@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { buscarAgendamentosConsulta } from '../../utils/requestAgendamentos/buscarAgendamento';
 
-interface Agendamento {
+interface AgendamentoConsulta {
   id: string;
   nome: string;
   // Adicione outros campos conforme necessário
 }
 
-const Agendamentos: React.FC = () => {
-  const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);
+const ConsultasAgendadas: React.FC = () => {
+  const [agendamentos, setAgendamentos] = useState<AgendamentoConsulta[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -20,8 +20,12 @@ const Agendamentos: React.FC = () => {
       try {
         const data = await buscarAgendamentosConsulta(idAderente, unidadeAtendimentoId);
         setAgendamentos(data);
-      } catch (err) {
-        setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError('An unknown error occurred');
+        }
       } finally {
         setLoading(false);
       }
@@ -50,4 +54,4 @@ const Agendamentos: React.FC = () => {
   );
 };
 
-export default Agendamentos;
+export default ConsultasAgendadas;

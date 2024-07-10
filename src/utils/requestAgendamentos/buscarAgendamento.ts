@@ -1,4 +1,4 @@
-import axiosConfig from '../config/axiosConfig';
+import axiosConfig from '../../axiosConfig';
 
 interface Agendamento {
   id: string;
