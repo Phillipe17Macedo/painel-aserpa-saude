@@ -1,0 +1,52 @@
+.notification-form {
+    background-color: #3b3f47;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .notification-form h2 {
+    margin-bottom: 20px;
+  }
+  
+  .notification-form form div {
+    margin-bottom: 15px;
+  }
+  
+  .notification-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .notification-form input,
+  .notification-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .notification-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .notification-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-message {
+    margin-top: 20px;
+    color: #ff4d4d;
+  }
+  
